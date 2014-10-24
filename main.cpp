@@ -36,10 +36,26 @@ void printList(LinkedList list) {
     }
 }
 
+void freeList(LinkedList& list) {
+    Node *currentNode = list;
+    Node *nextNode = NULL;
+    while (currentNode != NULL) {
+        nextNode = currentNode->nextNode;
+        delete currentNode;
+        currentNode = nextNode;
+    }
+}
+
+Node *firstNode(LinkedList list) {
+    return list;
+}
+
 int main()
 {
     LinkedList list = getList();
     printList(list);
+    Node *firstNode = firstNode(list);
+    freeList(list);
     return 0;
 }
 
